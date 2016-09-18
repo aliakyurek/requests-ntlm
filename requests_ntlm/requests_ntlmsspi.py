@@ -48,7 +48,7 @@ class HttpNtlmSspiAuth(AuthBase):
         """
         challenge = challenge.decode('base64') if challenge else None
         _, output_buffer = self.AuthGen.authorize(challenge)
-        return 'NTLM %s' % output_buffer[0].Buffer.encode('base64').replace('\n', '')
+        return 'NTLM {0!s}'.format(output_buffer[0].Buffer.encode('base64').replace('\n', ''))
 
     def new_request(self, response):
         response.content
